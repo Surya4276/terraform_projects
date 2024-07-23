@@ -1,0 +1,16 @@
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_s3_bucket" "bk" {
+  bucket = "surya-4276-bucket"
+  tags = {
+    "Name" = "s3_bucket"
+  }
+}
+
+resource "aws_s3_bucket_object" "file" {
+  bucket = aws_s3_bucket.bk.id
+  key    = "hi.txt"
+  source = "C:/Users/91967/Desktop/terraform/terra-1/hi.txt"
+}
